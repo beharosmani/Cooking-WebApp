@@ -1,0 +1,296 @@
+
+<html>
+<head>
+
+ <link rel="stylesheet" type="text/css" href="css/menustyle.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" href="css/menustyle.css" media="screen">
+
+
+
+<style>
+#div1  {
+    float: left;
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+#div2  {
+    float: right;
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+
+}
+
+.radioInput{
+height:30px;
+margin:10px 10px 10px 30px;
+padding-top:5px;
+display:block;
+font-weight: bold;
+}
+#pyetja{
+	font-size:23;
+	color:#010101;
+	line-height:24px;
+	
+
+text-shadow:2px 2px #ffffff;
+}
+#quiz{
+border-radius:10px;
+height:200px;
+width:640px;
+margin:50px;
+padding:50px;
+line-height:15px;
+color:#ffffff;
+background-image: url("Fotot/quizImg.png");
+text-shadow:2px 2px #010101;
+font-size:18px;
+border-image: url(BorderImg.png) 30 stretch;
+}
+#butoni{
+background-color:#DEB887;
+height:35px;
+width:100px;
+font-size:20px;
+color:#ffffff;
+text-shadow:2px 2px #000000;
+border-radius:10px;
+}
+#rezultati{
+	float: right;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class=" hapsira1">  
+  <div  class="container">  
+  <div class="header">
+    
+	<div class="logo">
+        	<img src="Fotot/Logo.jpg" alt="Web Logo"  height="100" width="150">
+	</div>
+    
+	<div class="menu">
+      <ul class="sf-menu" id="example">
+        
+		<li><a href="Home.html">Home</a></li>
+        
+		<li> <a href="Recipes.html">Recipes</a></li>
+        
+        <li> <a href="#">Our History</a>
+          <ul>
+            <li> <a href="Albhistory.html">Albanian History</a></li>
+	        <li><a href="quiz.html">Quiz</a></li>
+	       </ul>
+        </li>
+		
+		<li> <a href="Shop.html">Shop </a> </li>
+
+       <li> <a href="order.html">Order</a></li>
+	   <li> <a href="Other.html">Other </a> </li>
+      </ul>
+    
+	</div>
+  
+  </div>
+  
+  <div class="clearing"></div>
+</div>
+
+<div class="hapsira2">
+<div class="container">
+<div id="quiz">
+<div id="pyetja" ></div></br>
+<div class="radioInput"><input type="radio" name="opsioni" id="o1" value="Opsioni1"><span id="so1"></span></br></div>
+<div class="radioInput"><input type="radio" name="opsioni" id="o2" value="Opsioni1"><span id="so2"></span></br></div>
+<div class="radioInput"><input type="radio" name="opsioni" id="o3" value="Opsioni1"><span id="so3"></span></div>
+<p></p>
+<input type="button" onclick="dergo()" value="Send" id="butoni">
+<div id="rezultati"></div>
+
+
+</div>
+</div>
+</div>
+
+
+
+   
+  <div class="clearing"></div>  
+  </div>
+</div>
+
+
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+<!--drag and drop-->
+
+
+<p> you can  drag and drop the picture </p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="Fotot/Logo.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="180" height="40">
+</div>
+
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<br><br><br>
+<div></div>
+
+<div class="hapsira3">
+<div class="container">
+  <div class="footer"> <a href="https://en.wikipedia.org/wiki/Albanian_cuisine"> Albanian Cuisine </a><br>
+</div>
+</div>
+
+
+<script>
+
+var dokuQuiz = [{
+  pyetja:    "In which part of Europe is Kosovo?",
+  opsionet: ["Balkan", "Scandinavia", "Eastern Europe"],
+  sakte:    0
+  
+}, {
+  pyetja:    "What are the main ingredients in Albanian food?",
+  opsionet: ["Carbohydrates", "Meat", "Vegetables"],
+  sakte:    0
+}, {
+  pyetja: "What's the main population in Kosovo?",
+  opsionet: ["Serbian", "Albanian", "Romanian"],
+  sakte: 1
+}, {
+  pyetja:    "What's the typical Albanian food?",
+  opsionet: ["Hamburger", "Pizza", "Pite"],
+  sakte:    2
+}, {
+  pyetja:    "Which of these places are not in Albanian?",
+  opsionet: ["Tirana", "Skopje", "Berat"],
+  sakte:    0
+}]
+
+var pyetjaTani=0;
+var rezultati=0;
+var pyetje=document.getElementById("pyetja");
+var so11=document.getElementById("so1");
+var so22=document.getElementById("so2");
+var so33=document.getElementById("so3");
+var numriPyetjeve=dokuQuiz.length;
+var ndButon=document.getElementById("butoni");
+var rez=document.getElementById("rezultati")
+
+function dergo(){
+	var ops = document.getElementsByName("opsioni");
+	if(ops[0].checked!=true && ops[1].checked!=true && ops[2].checked!=true)
+	{
+		alert("Please pick an option!");
+		return;
+	}
+	
+	var indeksi="o"+(dokuQuiz[pyetjaTani].sakte+1);
+	var pergjigjaSakte=document.getElementById(indeksi);
+	
+	var indeksiS="so"+(dokuQuiz[pyetjaTani].sakte+1);
+	var pergjigjaSakteS=document.getElementById(indeksiS);
+	
+	pergjigjaSakteS.style.color="green";
+	if(pergjigjaSakte.checked === true)
+	{
+		rezultati++;
+		
+		rez.innerHTML="<br/>Right Answer!";
+		
+
+	}
+	else{
+		
+		for(var i=0;i<3;i++)
+		{var index="so"+(i+1);
+		var elem=document.getElementById(index);
+		if(ops[i].checked){
+		elem.style.color="red";
+		}
+		}
+		rez.innerHTML="<br/>Wrong Answer. ";
+		
+	}
+	if(pyetjaTani==(dokuQuiz.length-1))
+	{
+		perfundo(rezultati);
+		return;
+	}
+
+ndButon.value="Other";
+ndButon.onclick=function(){tjetra();}
+}
+
+function tjetra(){
+	pyetjaTani++;
+	pyetja();
+	pastro();
+	ndButon.value="Dërgo";
+	ndButon.onclick=function(){dergo();}
+	rez.innerHTML="";
+}
+
+function pastro(){
+    var ops = document.getElementsByName("opsioni");
+    for(var i=0;i<ops.length;i++)
+	{
+      ops[i].checked = false;
+	  var index="so"+(i+1);
+		var elem=document.getElementById(index);
+		elem.style.color="#ffffff";
+	  }
+}
+
+function pyetja(){
+	pyetje.innerHTML=dokuQuiz[pyetjaTani].pyetja;
+	so11.innerHTML=dokuQuiz[pyetjaTani].opsionet[0];
+	so22.innerHTML=dokuQuiz[pyetjaTani].opsionet[1];
+	so33.innerHTML=dokuQuiz[pyetjaTani].opsionet[2];
+}
+pyetja();
+
+function perfundo(rez){
+	var elementi=document.getElementById("quiz");
+	var x="";
+	if(rez==1){x="answer";}else{x="answers";}
+	elementi.innerHTML="Game Over.<br/><br/> You gave "+rez+" right "+x;
+	elementi.style.fontSize="xx-large";
+	
+}
+</script>
+
+
+
+
+
+</body>
+</html>

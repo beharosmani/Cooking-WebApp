@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> </title>
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "The number of orders  " + localStorage.clickcount ;
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+
+
+
+<style type="text/css">
+body {
+background-image: url(Fotot/prapavije.jpg) ;
+background-size: cover;
+
+}
+.aa {
+width: 400px;
+height: 550px;
+background-color: rgba(0,0,0,0.5);
+margin-top: 60px;
+margin-left: 800px;
+padding-top: 10px;
+padding-left: 100px;
+border-radius: 15px;
+-wekbit-border-radius:15px;
+-o-border-radius:15px;
+-moz-border-radius:15px;
+color: white;
+font-weight: bolder;
+
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#7BDC85");
+    });
+});
+</script>
+</head>
+<body>
+<div class="aa">
+<h2> ORDER </h2>
+<form  action="demo_form.asp" method="post">
+<label> First name : </label>
+<input type="text"  name="emri" style="width: 150px;
+height: 25px;border:0;border-radius: 5px;
+-wekbit-border-radius:5px;
+-o-border-radius:5px;
+-moz-border-radius:5px;"  required ></input><br><br>
+<label> Last name : </label> 
+<input type="text" name="mbiemri" style="width: 150px;
+height: 25px;border:0;border-radius: 5px;
+-wekbit-border-radius:5px;
+-o-border-radius:5px;
+-moz-border-radius:5px;" required></input><br><br>
+<label> Address : </label>
+<input type="text" name="address" style="width: 150px;
+height: 25px;border:0;border-radius: 5px;
+-wekbit-border-radius:5px;
+-o-border-radius:5px;
+-moz-border-radius:5px;" required></input><br><br>
+<label> Phone number : </label>
+<input type="text" name="phone number" style="width:150px;
+height: 25px;border:0;border-radius: 5px;
+-wekbit-border-radius:5px;
+-o-border-radius:5px;
+-moz-border-radius:5px;" required></input><br><br>
+<label> Order name : </label>
+<input type="text" name="Order name" style="width: 150px;
+height: 25px;border:0; 20px;border-radius: 5px;
+-wekbit-border-radius:5px;
+-o-border-radius:5px;
+-moz-border-radius:5px;" required ></input><br><br>
+
+Amount:</br>
+<input type="checkbox" name="Sasia1" value="OnePortion">One Portion
+<br>
+<input type="checkbox" name="Sasia2" value="twoPortion">Two Portions
+<br/>
+
+<input type="checkbox" name="Sasia3" value="threePortion">Three Portions
+<br>
+<input type="checkbox" name="Sasia4" value="fourPortion">Four Portions
+<br/>
+<br>
+Type:<br/>
+<input type="radio" name="Pozita" value="Vegetarian" >Vegetarian
+  <br>
+   <input type="radio" name="Pozita" value="Vegan">Vegan
+<br>
+   <input type="radio" name="Pozita" value="Human">Human
+<br>
+<br>
+<div> 
+<form action="MAILTO:albaniancuisine@shop.ks" method="post">
+<div ><input onclick="clickCounter()" type="submit"  value="Order" style="background-color: #24AF52; width:80px; height:25px;" > </input> </div>
+<div id="result" style="float:right;"></div>
+
+</form>
+</form>
+</div>
+
+</body>
+</html>
