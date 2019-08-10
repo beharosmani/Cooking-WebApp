@@ -1,0 +1,13 @@
+@font-face
+{
+    font-family:Scribblebox;
+    src:url("scribblebox.ttf");
+    src:url("scribblebox.eot");
+}
+body{
+   font-family:Scribblebox;
+   font-size:20px;
+   word-spacing:13px;
+   letter-spacing:2px;
+   color: rgb(51, 0, 0);
+}

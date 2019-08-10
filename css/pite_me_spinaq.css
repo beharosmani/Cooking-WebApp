@@ -1,0 +1,29 @@
+
+    #main_container{
+    width:800px;
+    height:550px;
+    column-count:5;
+    -moz-column-count:5;
+    -webkit-column-count:5;
+     column-gap: 10px;
+     -moz-column-gap:10px;
+     -webkit-column-gap:10px;
+     column-rule: 1px solid rgb(46, 46, 255);
+     -moz-column-rule: 1px solid rgb(46, 46, 255);
+     -webkit-column-rule: 1px solid rgb(46, 46, 255);
+    margin:auto;
+    margin-top:50px;
+    margin-left:10px;
+}
+
+h2{
+    margin:0px;
+    padding:0px;
+}
+ul{
+    margin:0px,0px,0px,20px;
+    padding:0px;
+}
+ul li{
+       margin-left:20px;
+}
